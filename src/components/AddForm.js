@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { addSmurf, setError } from "../actions";
+import { postSmurf, addSmurf, setError } from "../actions";
 
 const AddForm = (props) => {
   const [state, setState] = useState({
@@ -27,7 +27,7 @@ const AddForm = (props) => {
       props.setError("Name, Position, and Nickname can't be empty.");
     } else {
       //dispatch an addSmurf action
-      props.addSmurf({
+      props.postSmurf({
         ...state,
       });
     }
@@ -98,7 +98,9 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { addSmurf, setError })(AddForm);
+export default connect(mapStateToProps, { postSmurf, addSmurf, setError })(
+  AddForm
+);
 
 //Task List:
 //1. Connect the errorMessage, setError and addSmurf actions to the AddForm component.
